@@ -10,7 +10,7 @@ function TermsModal({ isOpen, onClose, onAgree }) {
     <div className="modal-backdrop" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <h2>서비스 이용약관</h2>
-        {/* 여기부터는 약관 작성하는 곳 */}
+        {/* 여기는 약관 작성하는 곳 */}
         <div className="terms-text-box">
           <p>제1조 (목적)</p>
           <p>

@@ -3,10 +3,8 @@
   padding: 1rem;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
-  font-size: 1rem;
   background-color: #f7f7f7;
   color: #888;
-  box-sizing: border-box;
 }
 
 .verify-input-row {
@@ -15,14 +13,39 @@
   gap: 0.5rem;
 }
 
-.verify-input-row input {
-  flex-grow: 1;
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-grow: 1; /* 남는 공간을 모두 차지 */
+}
+
+.input-with-icon input {
   width: 100%;
   padding: 1rem;
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 1rem;
   box-sizing: border-box;
+  padding-right: 3rem;
+}
+
+.input-with-icon input::-webkit-outer-spin-button,
+.input-with-icon input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.input-with-icon input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.verify-checkmark {
+  position: absolute;
+  right: 1rem;
+  color: #28a745;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .resend-button {
@@ -35,10 +58,4 @@
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
-}
-
-.helper-text {
-  margin-top: 0.5rem;
-  font-size: 0.8rem;
-  color: #888;
 }

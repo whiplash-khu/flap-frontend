@@ -4,16 +4,16 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 
-import LoginPage from "./pages/LoginPage.jsx";
-import SignupWelcomePage from "./pages/SignupWelcomePage.jsx";
-import SignupEmailPage from "./pages/SignupEmailPage.jsx";
-import SignupVerifyPage from "./pages/SignupVerifyPage.jsx";
-import SignupPasswordPage from "./pages/SignupPasswordPage.jsx";
-import UserInfoPage from "./pages/UserInfoPage.jsx";
-import SchoolInfoPage from "./pages/SchoolInfoPage.jsx";
-import SignupCompletePage from "./pages/SignupCompletePage.jsx";
-import ProfileSetupPage from "./pages/ProfileSetupPage.jsx";
-import SignupFinalPage from "./pages/SignupFinalPage.jsx";
+import LoginPage from "./pages/authentication/LoginPage.jsx";
+import SignupWelcomePage from "./pages/authentication/SignupWelcomePage.jsx";
+import SignupEmailPage from "./pages/authentication/SignupEmailPage.jsx";
+import SignupVerifyPage from "./pages/authentication/SignupVerifyPage.jsx";
+import SignupPasswordPage from "./pages/authentication/SignupPasswordPage.jsx";
+import UserInfoPage from "./pages/authentication/UserInfoPage.jsx";
+import SchoolInfoPage from "./pages/authentication/SchoolInfoPage.jsx";
+import SignupCompletePage from "./pages/authentication/SignupCompletePage.jsx";
+import ProfileSetupPage from "./pages/authentication/ProfileSetupPage.jsx";
+import SignupFinalPage from "./pages/authentication/SignupFinalPage.jsx";
 
 const router = createBrowserRouter([
   { path: "/login", element: <LoginPage /> },
