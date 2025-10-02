@@ -1,0 +1,7 @@
+.post-card{background:var(--surface);border-radius:var(--radius-md);padding:16px;margin-bottom:14px;box-shadow:0 6px 18px rgba(0,0,0,0.04);}
+.post-row{display:flex;justify-content:space-between;align-items:flex-start;}
+.post-title{margin:0;font-size:16px}
+.post-meta{font-size:12px;color:var(--muted);margin-top:8px}
+.post-content{margin:12px 0;color:var(--primary)}
+.post-footer{display:flex;align-items:center;gap:8px}
+.post-menu{border:none;background:transparent;cursor:pointer;}

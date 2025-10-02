@@ -1,0 +1,10 @@
+.icon-btn {
+  background: transparent;
+  border: none;
+  padding: 8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+.icon-btn:focus { outline: 2px solid rgba(0,0,0,0.15); border-radius:8px; }
