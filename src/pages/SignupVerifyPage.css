@@ -1,0 +1,48 @@
+/* 고정된 이메일 박스 스타일 */
+.email-display-box {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #f7f7f7;
+  color: #888;
+  box-sizing: border-box;
+}
+
+/* 인증번호 입력창과 재전송 버튼을 감싸는 행 */
+.verify-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* 입력창과 버튼 사이의 간격 */
+}
+
+.verify-input-row input {
+  flex-grow: 1; /* 남은 공간을 모두 차지 */
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+/* 재전송 버튼 스타일 */
+.resend-button {
+  flex-shrink: 0; /* 버튼 크기가 줄어들지 않도록 설정 */
+  padding: 1rem 1.25rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #1f2f56;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* 도움말 텍스트 스타일 */
+.helper-text {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #888;
+}
