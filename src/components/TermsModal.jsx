@@ -1,20 +1,16 @@
-// src/components/TermsModal.jsx
-
 import React from "react";
 import "./TermsModal.css";
 
 function TermsModal({ isOpen, onClose, onAgree }) {
-  // isOpen이 false이면 아무것도 렌더링하지 않음
   if (!isOpen) {
     return null;
   }
 
   return (
-    // 모달 배경 (뒷 배경을 어둡게 처리)
     <div className="modal-backdrop" onClick={onClose}>
-      {/* 실제 모달 컨텐츠 (배경 클릭 시 닫히지 않도록 이벤트 전파 중단) */}
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <h2>서비스 이용약관</h2>
+        {/* 여기부터는 약관 작성하는 곳 */}
         <div className="terms-text-box">
           <p>제1조 (목적)</p>
           <p>

@@ -1,5 +1,5 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
-
+/* 폰트(프린텐다드) 여기서 불러옴 */
 body {
   margin: 0;
   font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,

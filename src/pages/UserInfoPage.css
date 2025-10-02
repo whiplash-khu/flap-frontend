@@ -1,6 +1,6 @@
 .gender-selection {
   display: flex;
-  gap: 0.5rem; /* 버튼 사이 간격 */
+  gap: 0.5rem;
 }
 .gender-button {
   flex-grow: 1;

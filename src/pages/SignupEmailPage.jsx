@@ -1,5 +1,3 @@
-// src/pages/SignupEmailPage.jsx
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SignupLayout from "../components/SignupLayout";
@@ -18,7 +16,6 @@ function SignupEmailPage() {
     console.log(`인증번호 요청 이메일: ${email}`);
     alert("인증번호가 발송되었습니다. (시뮬레이션)");
 
-    // navigate 할 때 state 객체에 이메일 정보를 담아 전달합니다.
     navigate("/signup/verify", { state: { email: email } });
   };
 

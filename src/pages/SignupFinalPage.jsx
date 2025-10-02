@@ -1,5 +1,3 @@
-// src/pages/SignupFinalPage.jsx
-
 import { useNavigate } from "react-router-dom";
 import "./SignupFinalPage.css";
 

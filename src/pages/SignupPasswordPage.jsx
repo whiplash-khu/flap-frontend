@@ -1,5 +1,3 @@
-// src/pages/SignupPasswordPage.jsx
-
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import SignupLayout from "../components/SignupLayout";
@@ -8,16 +6,13 @@ import "./SignupPasswordPage.css";
 function SignupPasswordPage() {
   const navigate = useNavigate();
   const location = useLocation();
-  const email = location.state?.email; // 이전 페이지들로부터 email 정보를 계속 전달받음
+  const email = location.state?.email;
 
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const [error, setError] = useState(""); // 에러 메시지를 위한 상태
-
-  // src/pages/SignupPasswordPage.jsx 의 handleNext 함수
+  const [error, setError] = useState("");
 
   const handleNext = () => {
-    // ... (기존 유효성 검사 코드는 그대로)
     if (password.length < 8) {
       setError("비밀번호는 8자 이상이어야 합니다.");
       return;
@@ -32,7 +27,6 @@ function SignupPasswordPage() {
     console.log("최종 비밀번호:", password);
     alert("비밀번호 설정이 완료되었습니다.");
 
-    // 다음 단계 페이지로 이동 (경로를 '/signup/user-info'로 수정)
     navigate("/signup/user-info", {
       state: { email: email, password: password },
     });

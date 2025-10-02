@@ -1,5 +1,3 @@
-// src/pages/LoginPage.jsx
-
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./LoginPage.css";
@@ -16,13 +14,11 @@ function LoginPage() {
     }
     console.log("로그인 시도:", { email, password });
     alert(`${email}님, 환영합니다!`);
-    // navigate('/main');
   };
 
   return (
     <div className="login-page">
       <div className="login-container">
-        {/* 메인 헤딩 영역 */}
         <div className="hero-section">
           <h1>
             모임의 시작,
@@ -31,7 +27,6 @@ function LoginPage() {
           </h1>
         </div>
 
-        {/* 입력 필드 및 버튼 영역 */}
         <div className="form-section">
           <div className="input-group">
             <input
@@ -58,7 +53,6 @@ function LoginPage() {
           </div>
         </div>
 
-        {/* 하단 회원가입 링크 영역 */}
         <div className="signup-footer">
           <p>
             아직 계정이 없다면? <Link to="/signup">회원가입</Link>

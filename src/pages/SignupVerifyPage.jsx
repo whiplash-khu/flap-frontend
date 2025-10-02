@@ -1,15 +1,12 @@
-// src/pages/SignupVerifyPage.jsx
-
 import { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom"; // useLocation 추가
+import { useNavigate, useLocation } from "react-router-dom";
 import SignupLayout from "../components/SignupLayout";
 import "./SignupVerifyPage.css";
 
 function SignupVerifyPage() {
   const navigate = useNavigate();
-  const location = useLocation(); // location 객체를 통해 state 데이터에 접근
+  const location = useLocation();
 
-  // 이전 페이지에서 전달받은 이메일. state가 없을 경우를 대비해 기본값 설정
   const email = location.state?.email || "이메일 정보 없음";
 
   const [verifyCode, setVerifyCode] = useState("");
@@ -21,7 +18,7 @@ function SignupVerifyPage() {
     }
     console.log(`입력된 인증번호: ${verifyCode}`);
     alert("인증이 완료되었습니다. (시뮬레이션)");
-    // 다음 단계인 비밀번호 설정 페이지로 이동하면서 email 정보 전달
+
     navigate("/signup/password", { state: { email: email } });
   };
 
@@ -37,13 +34,11 @@ function SignupVerifyPage() {
         이메일 인증이 필요해요.
       </h2>
 
-      {/* 고정된 이메일 표시 박스 */}
       <div className="input-group">
         <label>이메일</label>
         <div className="email-display-box">{email}</div>
       </div>
 
-      {/* 인증번호 입력 필드 */}
       <div className="input-group">
         <label>인증</label>
         <div className="verify-input-row">

@@ -1,3 +1,4 @@
+// 여기다가 라우팅해놓음
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";

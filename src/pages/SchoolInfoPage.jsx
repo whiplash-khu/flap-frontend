@@ -1,5 +1,3 @@
-// src/pages/SchoolInfoPage.jsx
-
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import SignupLayout from "../components/SignupLayout";
@@ -11,9 +9,7 @@ function SchoolInfoPage() {
   const existingData = location.state;
 
   const [school, setSchool] = useState("");
-  const [entryYear, setEntryYear] = useState(""); // 입학년도
-
-  // src/pages/SchoolInfoPage.jsx 의 handleNext 함수
+  const [entryYear, setEntryYear] = useState("");
 
   const handleNext = () => {
     if (!school || !entryYear) {
@@ -25,11 +21,9 @@ function SchoolInfoPage() {
     console.log("--- 최종 회원가입 데이터 ---");
     console.log(finalSignupData);
 
-    // alert을 제거하고, 새로 만든 완료 페이지로 모든 데이터를 전달하며 이동
     navigate("/signup/complete", { state: finalSignupData });
   };
 
-  // 입학년도 옵션을 동적으로 생성 (예: 현재년도부터 10년 전까지)
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 10 }, (_, i) => currentYear - i);
 

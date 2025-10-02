@@ -1,9 +1,7 @@
-// src/pages/SignupWelcomePage.jsx
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SignupLayout from "../components/SignupLayout";
-import TermsModal from "../components/TermsModal"; // 방금 만든 모달 컴포넌트
+import TermsModal from "../components/TermsModal";
 
 function SignupWelcomePage() {
   const navigate = useNavigate();
@@ -15,7 +13,7 @@ function SignupWelcomePage() {
 
   const handleAgree = () => {
     setIsModalOpen(false);
-    // 약관에 동의했으므로 다음 단계(이메일 입력)로 이동
+
     navigate("/signup/email");
   };
 
