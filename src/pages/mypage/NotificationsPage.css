@@ -1,0 +1,17 @@
+.notification-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.notification-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 0.5rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.notification-label {
+  font-size: 1rem;
+  color: #333;
+}

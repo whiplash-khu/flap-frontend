@@ -17,6 +17,10 @@ function SignupPasswordPage() {
       setError("비밀번호는 8자 이상이어야 합니다.");
       return;
     }
+    if (password.length > 16) {
+      setError("비밀번호는 16자 이하이어야 합니다.");
+      return;
+    }
     if (password !== passwordConfirm) {
       setError("비밀번호가 일치하지 않습니다.");
       return;
@@ -43,7 +47,7 @@ function SignupPasswordPage() {
         <label>비밀번호</label>
         <input
           type="password"
-          placeholder="8자 이상 입력"
+          placeholder="8~16 글자 입력"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />

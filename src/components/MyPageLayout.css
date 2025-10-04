@@ -1,0 +1,37 @@
+.mypage-layout-page {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+.mypage-layout-container {
+  max-width: 420px;
+  margin: 0 auto;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.mypage-layout-header {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0.5rem 0;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.back-arrow {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+}
+.header-title {
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin-left: 40px;
+}
+
+/* .mypage-layout-content {
+  컨텐츠 넣기 
+} */

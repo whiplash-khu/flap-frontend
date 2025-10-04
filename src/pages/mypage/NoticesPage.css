@@ -1,0 +1,37 @@
+.notice-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.notice-item {
+  padding: 1.5rem 0.5rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.notice-item:last-child {
+  border-bottom: none;
+}
+
+.notice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.notice-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.notice-date {
+  font-size: 0.875rem;
+  color: #888;
+}
+
+.notice-content {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}

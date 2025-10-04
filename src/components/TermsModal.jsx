@@ -18,7 +18,7 @@ function TermsModal({ isOpen, onClose, onAgree }) {
             및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.
           </p>
           <p>...</p>
-          <p>(약관 내용이 여기에 들어갑니다)</p>
+          <p>(약관 내용 들어감)</p>
         </div>
         <div className="modal-actions">
           <button onClick={onClose} className="close-button">

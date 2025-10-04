@@ -12,11 +12,15 @@ function SignupVerifyPage() {
 
   const [verifyCode, setVerifyCode] = useState("");
   const [isCorrect, setIsCorrect] = useState(false);
+  const handleResend = () => {
+    alert("인증번호를 다시 전송했습니다. (시뮬레이션)");
+  };
 
+  // 임시로 인증코드 123456임
   const CORRECT_CODE = "123456";
 
   const handleCodeChange = (e) => {
-    const newCode = e.target.value;
+    const newCode = e.target.value.slice(0, 6);
     setVerifyCode(newCode);
     if (newCode === CORRECT_CODE) {
       setIsCorrect(true);
@@ -52,9 +56,8 @@ function SignupVerifyPage() {
       </div>
       <div className="input-group">
         <label>인증</label>
-        {/* 입력창과 재전송 버튼을 한 줄에 배치하는 컨테이너 */}
+
         <div className="verify-input-row">
-          {/* 아이콘을 포함하는 input 컨테이너 */}
           <div className="input-with-icon">
             <input
               type="number"
@@ -64,7 +67,9 @@ function SignupVerifyPage() {
             />
             {isCorrect && <span className="verify-checkmark">✓</span>}
           </div>
-          <button className="resend-button">재전송</button>
+          <button className="resend-button" onClick={handleResend}>
+            재전송
+          </button>
         </div>
       </div>
     </SignupLayout>

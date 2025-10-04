@@ -1,4 +1,4 @@
-// 여기다가 라우팅해놓음
+// 여기는 라우터 경로
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -14,6 +14,16 @@ import SchoolInfoPage from "./pages/authentication/SchoolInfoPage.jsx";
 import SignupCompletePage from "./pages/authentication/SignupCompletePage.jsx";
 import ProfileSetupPage from "./pages/authentication/ProfileSetupPage.jsx";
 import SignupFinalPage from "./pages/authentication/SignupFinalPage.jsx";
+import MyPage from "./pages/mypage/MyPage.jsx";
+import ProfileEditPage from "./pages/mypage/ProfileEditPage.jsx";
+import SecurityPage from "./pages/mypage/SecurityPage.jsx";
+import NotificationsPage from "./pages/mypage/NotificationsPage.jsx";
+import NoticesPage from "./pages/mypage/NoticesPage.jsx";
+import SupportPage from "./pages/mypage/SupportPage.jsx";
+import ChangePasswordPage from "./pages/mypage/ChangePasswordPage.jsx";
+import ChangeBirthdatePage from "./pages/mypage/ChangeBirthdatePage.jsx";
+import WithdrawPage from "./pages/mypage/WithdrawPage.jsx";
+import WithdrawCompletePage from "./pages/mypage/WithdrawCompletePage.jsx";
 
 const router = createBrowserRouter([
   { path: "/login", element: <LoginPage /> },
@@ -26,6 +36,16 @@ const router = createBrowserRouter([
   { path: "/signup/complete", element: <SignupCompletePage /> },
   { path: "/profile-setup", element: <ProfileSetupPage /> },
   { path: "/signup/final", element: <SignupFinalPage /> },
+  { path: "/mypage", element: <MyPage /> },
+  { path: "/mypage/edit-profile", element: <ProfileEditPage /> },
+  { path: "/mypage/security", element: <SecurityPage /> },
+  { path: "/mypage/notifications", element: <NotificationsPage /> },
+  { path: "/mypage/notices", element: <NoticesPage /> },
+  { path: "/mypage/support", element: <SupportPage /> },
+  { path: "/mypage/change-password", element: <ChangePasswordPage /> },
+  { path: "/mypage/change-birthdate", element: <ChangeBirthdatePage /> },
+  { path: "/mypage/withdraw", element: <WithdrawPage /> },
+  { path: "/mypage/withdraw-complete", element: <WithdrawCompletePage /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

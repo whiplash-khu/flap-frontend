@@ -1,0 +1,45 @@
+.profile-card {
+  background-color: #deedf4;
+  border-radius: 16px;
+  padding: 4rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.profile-image {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-info .nickname {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.profile-info .email,
+.profile-info .school {
+  font-size: 0.875rem;
+  color: #555;
+  margin: 0;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item {
+  padding: 1.25rem 0.5rem;
+  font-size: 1rem;
+  color: #333;
+  text-decoration: none;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
