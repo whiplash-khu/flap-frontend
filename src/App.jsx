@@ -1,5 +1,3 @@
-// src/App.jsx
-
 import LoginPage from "./pages/authentication/LoginPage";
 
 function App() {

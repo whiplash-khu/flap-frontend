@@ -1,0 +1,40 @@
+.description-textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 18px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.tag-item {
+  display: flex;
+  align-items: center;
+  background-color: #e7f3ff;
+  color: #007bff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.remove-tag-button {
+  background: none;
+  border: none;
+  color: #007bff;
+  margin-left: 0.4rem;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 0;
+  line-height: 1;
+}

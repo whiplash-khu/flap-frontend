@@ -24,6 +24,10 @@ import ChangePasswordPage from "./pages/mypage/ChangePasswordPage.jsx";
 import ChangeBirthdatePage from "./pages/mypage/ChangeBirthdatePage.jsx";
 import WithdrawPage from "./pages/mypage/WithdrawPage.jsx";
 import WithdrawCompletePage from "./pages/mypage/WithdrawCompletePage.jsx";
+import CreateGroupPage from "./pages/creategroup/CreateGroupPage.jsx";
+import CreateGroupDescriptionPage from "./pages/creategroup/CreateGroupDescriptionPage.jsx";
+import CreateGroupQuestionPage from "./pages/creategroup/CreateGroupQuestionPage.jsx";
+import CreateGroupCompletePage from "./pages/creategroup/CreateGroupCompletePage.jsx";
 
 const router = createBrowserRouter([
   { path: "/login", element: <LoginPage /> },
@@ -46,6 +50,10 @@ const router = createBrowserRouter([
   { path: "/mypage/change-birthdate", element: <ChangeBirthdatePage /> },
   { path: "/mypage/withdraw", element: <WithdrawPage /> },
   { path: "/mypage/withdraw-complete", element: <WithdrawCompletePage /> },
+  { path: "/creategroup/create", element: <CreateGroupPage /> },
+  { path: "/creategroup/description", element: <CreateGroupDescriptionPage /> },
+  { path: "/creategroup/questions", element: <CreateGroupQuestionPage /> },
+  { path: "/group/create-complete", element: <CreateGroupCompletePage /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

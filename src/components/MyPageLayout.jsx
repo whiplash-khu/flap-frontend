@@ -1,5 +1,3 @@
-// src/components/MyPageLayout.jsx
-
 import { useNavigate } from "react-router-dom";
 import "./MyPageLayout.css";
 
