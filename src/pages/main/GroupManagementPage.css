@@ -1,0 +1,67 @@
+.management-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.management-link-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-weight: 600;
+  text-decoration: none;
+  color: #333;
+}
+.management-link-card span:last-child {
+  color: #888;
+}
+.application-card {
+  background-color: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.application-card h2 {
+  font-size: 1rem;
+  margin: 0 0 1rem 0;
+}
+
+.status-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.status-count strong {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.status-count span {
+  font-size: 0.9rem;
+  color: #888;
+  margin-left: 0.25rem;
+}
+.view-applicants-button {
+  background-color: #1f2f56;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.disband-button {
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  border: 1px solid #ff4d4d;
+  border-radius: 12px;
+  background-color: transparent;
+  color: #ff4d4d;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1.5rem;
+}

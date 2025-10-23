@@ -5,7 +5,7 @@ function CreateGroupCompletePage() {
   const navigate = useNavigate();
 
   const handleDone = () => {
-    navigate("/");
+    navigate("/homepage");
   };
 
   return (

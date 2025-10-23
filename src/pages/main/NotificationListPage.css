@@ -1,0 +1,20 @@
+.notification-list-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.notification-item {
+  padding: 1.25rem 0.5rem;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.notification-message {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+  line-height: 1.5;
+}
+
+.notification-time {
+  font-size: 0.8rem;
+  color: #888;
+}

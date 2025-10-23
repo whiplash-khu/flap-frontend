@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import MyPageLayout from "../../components/MyPageLayout";
+import MyPageLayout from "../../components/layout/MyPageLayout";
 import "./SecurityPage.css";
 
 function SecurityPage() {

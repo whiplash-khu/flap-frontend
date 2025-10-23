@@ -48,7 +48,7 @@
 
 .withdraw-footer {
   position: relative;
-  bottom: -14rem; /* 현재 위치에서 50px 아래로 이동 */
+  bottom: -14rem;
   display: flex;
   gap: 0.5rem;
   padding: 1rem 0;

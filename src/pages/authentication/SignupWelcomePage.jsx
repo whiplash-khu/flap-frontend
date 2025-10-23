@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import SignupLayout from "../../components/SignupLayout";
-import TermsModal from "../../components/TermsModal";
+import SignupLayout from "../../components/layout/SignupLayout";
+import TermsModal from "../../components/layout/TermsModal";
 
 function SignupWelcomePage() {
   const navigate = useNavigate();

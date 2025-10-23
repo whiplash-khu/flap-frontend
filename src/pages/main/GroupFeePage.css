@@ -1,0 +1,107 @@
+.fee-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.fee-box {
+  background-color: white;
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.fee-box .label {
+  display: block;
+  font-size: 0.875rem;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+.total-fee-box .amount {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #000;
+}
+
+.account-box .account-info,
+.payment-item .account-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.account-number {
+  font-weight: 600;
+}
+
+.payment-item .amount {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #000;
+}
+
+.account-info button {
+  background-color: #f0f4f8;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.fee-admin-view .date-nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.fee-admin-view .date-nav-header button {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+.fee-admin-view .date-nav-header button:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+.fee-admin-view .date-display {
+  text-align: center;
+}
+.fee-admin-view .date-display h4 {
+  font-size: 1.1rem;
+  margin: 0 0 0.25rem 0;
+}
+.fee-admin-view .date-display span {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.member-fee-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.member-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 1.25rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.member-row span {
+  font-weight: 600;
+}
+
+.fee-status-select {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0.5rem;
+  font-weight: 600;
+}

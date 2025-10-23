@@ -12,27 +12,25 @@
 }
 .mypage-layout-header {
   display: flex;
-  align-items: center;
-  position: relative;
+  align-items: flex-start;
+  gap: 1rem;
   padding: 0.5rem 0;
   width: 100%;
   margin-bottom: 1rem;
-  padding-left: 5px;
 }
+
 .back-arrow {
   background: none;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  position: absolute;
-  left: 0;
-}
-.header-title {
-  font-size: 1.1rem;
-  font-weight: 300;
-  margin-left: 40px;
+  padding: 0;
 }
 
-/* .mypage-layout-content {
-  컨텐츠 넣기 
-} */
+.header-title {
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin: 0;
+  padding-right: 180px;
+  padding-top: 3px;
+}

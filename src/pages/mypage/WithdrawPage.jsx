@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import MyPageLayout from "../../components/MyPageLayout";
+import MyPageLayout from "../../components/layout/MyPageLayout";
 import "./WithdrawPage.css";
 
 function WithdrawPage() {

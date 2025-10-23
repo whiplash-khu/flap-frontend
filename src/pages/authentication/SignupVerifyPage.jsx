@@ -1,8 +1,7 @@
-// src/pages/SignupVerifyPage.jsx
-
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import SignupLayout from "../../components/SignupLayout";
+import { IoCheckmark } from "react-icons/io5";
+import SignupLayout from "../../components/layout/SignupLayout";
 import "./SignupVerifyPage.css";
 
 function SignupVerifyPage() {
@@ -16,7 +15,6 @@ function SignupVerifyPage() {
     alert("인증번호를 다시 전송했습니다. (시뮬레이션)");
   };
 
-  // 임시로 인증코드 123456임
   const CORRECT_CODE = "123456";
 
   const handleCodeChange = (e) => {
@@ -61,11 +59,15 @@ function SignupVerifyPage() {
           <div className="input-with-icon">
             <input
               type="number"
-              placeholder="코드를 입력해주세요."
+              placeholder="(임시 인증번호 '123456')"
               value={verifyCode}
               onChange={handleCodeChange}
             />
-            {isCorrect && <span className="verify-checkmark">✓</span>}
+            {isCorrect && (
+              <span className="verify-checkmark">
+                <IoCheckmark />
+              </span>
+            )}
           </div>
           <button className="resend-button" onClick={handleResend}>
             재전송

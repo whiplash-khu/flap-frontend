@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import SignupLayout from "../../components/SignupLayout";
+import SignupLayout from "../../components/layout/SignupLayout";
 import "./SignupEmailPage.css";
 
 function SignupEmailPage() {

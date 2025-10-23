@@ -78,3 +78,16 @@
   font-weight: 600;
   text-decoration: none;
 }
+
+.message {
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+.message.success {
+  color: #155724;
+}
+.message.error {
+  color: #ee3300;
+}

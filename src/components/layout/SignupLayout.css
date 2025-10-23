@@ -14,7 +14,7 @@
 .layout-header {
   display: flex;
   align-items: center;
-  position: relative;
+  gap: 1rem;
   padding: 0.5rem 0;
   width: 100%;
 }
@@ -23,13 +23,12 @@
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  position: absolute;
-  left: 0;
+  padding: 0;
 }
 .header-title {
   font-size: 1.1rem;
-  font-weight: 300;
-  margin-left: 40px;
+  font-weight: 400;
+  margin: 0;
 }
 .layout-content {
   flex-grow: 1;

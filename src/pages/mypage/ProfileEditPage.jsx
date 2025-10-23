@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MyPageLayout from "../../components/MyPageLayout";
+import MyPageLayout from "../../components/layout/MyPageLayout";
 import "./ProfileEditPage.css";
 
 function ProfileEditPage() {
@@ -36,7 +36,6 @@ function ProfileEditPage() {
           <span className="field-label">닉네임</span>
           <input
             type="text"
-            // 👇 isEditing이 true일 때만 'editing' 클래스를 추가합니다.
             className={`nickname-input ${isEditing ? "editing" : ""}`}
             value={nickname}
             onChange={(e) => setNickname(e.target.value)}

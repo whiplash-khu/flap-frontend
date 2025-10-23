@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import SignupLayout from "../../components/SignupLayout";
+import { GoCheckCircle } from "react-icons/go";
+import { LuPencil } from "react-icons/lu";
+import { TfiTrash } from "react-icons/tfi";
+import SignupLayout from "../../components/layout/SignupLayout";
 import "./CreateGroupQuestionPage.css";
 
 function CreateGroupQuestionPage() {
@@ -87,7 +90,7 @@ function CreateGroupQuestionPage() {
               onChange={(e) => setCurrentQuestion(e.target.value)}
             />
             <button onClick={handleAddQuestion} className="add-button">
-              ✓
+              <GoCheckCircle />
             </button>
           </div>
         </div>
@@ -109,7 +112,7 @@ function CreateGroupQuestionPage() {
                     onClick={() => handleEditSave(index)}
                     className="icon-button"
                   >
-                    ✓
+                    <GoCheckCircle />
                   </button>
                 </div>
               ) : (
@@ -122,13 +125,13 @@ function CreateGroupQuestionPage() {
                       onClick={() => handleEditStart(index, question)}
                       className="icon-button"
                     >
-                      ✏️
+                      <LuPencil />
                     </button>
                     <button
                       onClick={() => handleRemoveQuestion(index)}
-                      className="icon-button"
+                      className="icon-button-trash"
                     >
-                      ×
+                      <TfiTrash />
                     </button>
                   </div>
                 </>

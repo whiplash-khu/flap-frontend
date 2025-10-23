@@ -28,6 +28,23 @@ import CreateGroupPage from "./pages/creategroup/CreateGroupPage.jsx";
 import CreateGroupDescriptionPage from "./pages/creategroup/CreateGroupDescriptionPage.jsx";
 import CreateGroupQuestionPage from "./pages/creategroup/CreateGroupQuestionPage.jsx";
 import CreateGroupCompletePage from "./pages/creategroup/CreateGroupCompletePage.jsx";
+import HomePage from "./pages/main/HomePage.jsx";
+import ChatListPage from "./pages/main/ChatListPage.jsx";
+import NotificationListPage from "./pages/main/NotificationListPage.jsx";
+import GroupBoardPage from "./pages/main/GroupBoardPage.jsx";
+import CreatePostPage from "./pages/main/CreatePostPage.jsx";
+import GroupSchedulePage from "./pages/main/GroupSchedulePage.jsx";
+import GroupAttendancePage from "./pages/main/GroupAttendancePage.jsx";
+import GroupFeePage from "./pages/main/GroupFeePage.jsx";
+import GroupManagementPage from "./pages/main/GroupManagementPage.jsx";
+import GroupSettingsPage from "./pages/main/GroupSettingsPage.jsx";
+import ApplicantsListPage from "./pages/main/ApplicantsListPage.jsx";
+import ApplicationDetailPage from "./pages/main/ApplicationDetailPage.jsx";
+import GroupApplyPage from "./pages/apply/GroupApplyPage.jsx";
+import GroupApplicationFormPage from "./pages/apply/GroupApplicationFormPage.jsx";
+import GroupApplyFinalPage from "./pages/apply/GroupApplyFinalPage.jsx";
+import ChatRoomPage from "./pages/main/ChatRoomPage.jsx";
+import GroupSearchPage from "./pages/main/GroupSearchPage.jsx";
 
 const router = createBrowserRouter([
   { path: "/login", element: <LoginPage /> },
@@ -54,6 +71,29 @@ const router = createBrowserRouter([
   { path: "/creategroup/description", element: <CreateGroupDescriptionPage /> },
   { path: "/creategroup/questions", element: <CreateGroupQuestionPage /> },
   { path: "/group/create-complete", element: <CreateGroupCompletePage /> },
+  { path: "/homepage", element: <HomePage /> },
+  { path: "/chat", element: <ChatListPage /> },
+  { path: "/notifications", element: <NotificationListPage /> },
+  { path: "/group/:groupId/board", element: <GroupBoardPage /> },
+  { path: "/group/:groupId/board/new", element: <CreatePostPage /> },
+  { path: "/group/:groupId/schedule", element: <GroupSchedulePage /> },
+  { path: "/group/:groupId/attendance", element: <GroupAttendancePage /> },
+  { path: "/group/:groupId/fee", element: <GroupFeePage /> },
+  { path: "/group/:groupId/manage", element: <GroupManagementPage /> },
+  { path: "/group/:groupId/manage/settings", element: <GroupSettingsPage /> },
+  {
+    path: "/group/:groupId/manage/applicants",
+    element: <ApplicantsListPage />,
+  },
+  {
+    path: "/group/:groupId/manage/applicants/:userId",
+    element: <ApplicationDetailPage />,
+  },
+  { path: "/group/apply/:groupId", element: <GroupApplyPage /> },
+  { path: "/group/apply/:groupId/form", element: <GroupApplicationFormPage /> },
+  { path: "/group/apply/final", element: <GroupApplyFinalPage /> },
+  { path: "/chat/:chatId", element: <ChatRoomPage /> },
+  { path: "/group/search", element: <GroupSearchPage /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

@@ -1,4 +1,4 @@
-import MyPageLayout from "../../components/MyPageLayout";
+import MyPageLayout from "../../components/layout/MyPageLayout";
 import "./NoticesPage.css";
 
 // 임시 공지사항. 근데 이거를 클릭하면 내용 화면으로 넘어가야되나? 아님 이 안에 다 작성?

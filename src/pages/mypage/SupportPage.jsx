@@ -1,4 +1,4 @@
-import MyPageLayout from "../../components/MyPageLayout";
+import MyPageLayout from "../../components/layout/MyPageLayout";
 import "./SupportPage.css";
 
 function SupportPage() {

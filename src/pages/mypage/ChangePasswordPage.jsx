@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import SignupLayout from "../../components/SignupLayout";
+import SignupLayout from "../../components/layout/SignupLayout";
 import "./ChangePasswordPage.css";
 
 function ChangePasswordPage() {
@@ -11,7 +11,6 @@ function ChangePasswordPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
-  //백엔드 연동되면 기존 비밀번호 맞는지 확인하는 코드 추가하기
   const handleChangePassword = () => {
     if (!currentPassword || !newPassword || !confirmPassword) {
       setError("모든 필드를 입력해주세요.");

@@ -1,0 +1,37 @@
+.applicants-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.applicant-card {
+  background-color: white;
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.applicant-name {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.applicant-info {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.view-application-button {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  background-color: #1f2f56;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}

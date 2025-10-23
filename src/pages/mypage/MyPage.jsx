@@ -1,5 +1,10 @@
 import { Link } from "react-router-dom";
-import MyPageLayout from "../../components/MyPageLayout";
+import { IoLockClosedOutline } from "react-icons/io5";
+import { IoPersonOutline } from "react-icons/io5";
+import { AiOutlineBell } from "react-icons/ai";
+import { AiOutlineNotification } from "react-icons/ai";
+import { MdQuestionMark } from "react-icons/md";
+import MyPageLayout from "../../components/layout/MyPageLayout";
 import "./MyPage.css";
 
 function MyPage() {
@@ -28,19 +33,19 @@ function MyPage() {
 
       <div className="menu-list">
         <Link to="/mypage/edit-profile" className="menu-item">
-          프로필 편집
+          <IoPersonOutline /> 프로필 편집
         </Link>
         <Link to="/mypage/security" className="menu-item">
-          개인정보 및 보안
+          <IoLockClosedOutline /> 개인정보 및 보안
         </Link>
         <Link to="/mypage/notifications" className="menu-item">
-          알림
+          <AiOutlineBell /> 알림
         </Link>
         <Link to="/mypage/notices" className="menu-item">
-          공지사항
+          <AiOutlineNotification /> 공지사항
         </Link>
         <Link to="/mypage/support" className="menu-item">
-          고객센터 / 운영정책
+          <MdQuestionMark /> 고객센터 / 운영정책
         </Link>
       </div>
     </MyPageLayout>

@@ -15,6 +15,8 @@ function LoginPage() {
     // 여기는 백엔드 연동되면 바꿔야됨
     console.log("로그인 시도:", { email, password });
     alert(`${email}님, 환영합니다!`);
+
+    navigate("/homepage");
   };
 
   return (

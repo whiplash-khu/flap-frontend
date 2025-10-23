@@ -1,0 +1,87 @@
+.apply-page-container {
+  max-width: 420px;
+  margin: 0 auto;
+  background-color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.apply-page-header {
+  padding: 1rem 1.5rem;
+  padding-top: 3rem;
+  text-align: center;
+  position: relative;
+}
+.apply-page-header .back-arrow {
+  position: absolute;
+  left: 1.5rem;
+  top: 3rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.apply-page-title h2 {
+  padding-top: 15px;
+  margin: 0;
+  font-size: 1.5rem;
+}
+.apply-page-title p {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.875rem;
+  color: #888;
+}
+
+.apply-page-content {
+  flex-grow: 1;
+  background-color: #deedf4;
+  border-radius: 24px 24px 0 0;
+  padding: 1.5rem;
+}
+
+.apply-description-card {
+  background-color: white;
+  border-radius: 16px;
+  padding: 9.3rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.apply-description-card p {
+  margin: 0;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.apply-page-footer {
+  background-color: #e7f3ff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0 1.5rem 2rem 1.5rem;
+}
+
+.apply-button,
+.contact-button {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.apply-button {
+  background-color: #1f2f56;
+  color: white;
+  border: none;
+}
+
+.contact-button {
+  background-color: transparent;
+  color: #1f2f56;
+  border: 1px solid #1f2f56;
+}

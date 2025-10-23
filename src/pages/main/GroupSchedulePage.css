@@ -1,0 +1,30 @@
+.calendar-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.upcoming-schedules h4 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.schedule-item {
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.schedule-title {
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+}
+
+.schedule-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #555;
+}

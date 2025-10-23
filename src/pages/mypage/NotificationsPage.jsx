@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MyPageLayout from "../../components/MyPageLayout";
+import MyPageLayout from "../../components/layout/MyPageLayout";
 import ToggleSwitch from "../../components/common/ToggleSwitch";
 import "./NotificationsPage.css";
 
