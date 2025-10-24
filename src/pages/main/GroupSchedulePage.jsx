@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import GroupDetailLayout from "../../components/layout/GroupDetailLayout";
 import CalendarCard from "../../components/common/Molecules/CalendarCard";
 import "./GroupSchedulePage.css";
@@ -14,7 +15,9 @@ const mockSchedules = [
 ];
 
 function GroupSchedulePage() {
+  const { groupId } = useParams();
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const isAdmin = true;
 
   return (
     <GroupDetailLayout groupName="스트리트 푸드 파이터">
@@ -39,6 +42,17 @@ function GroupSchedulePage() {
           ))}
         </div>
       </div>
+
+      {isAdmin && (
+        <footer className="schedule-footer">
+          <Link
+            to={`/group/${groupId}/schedule/new`}
+            className="register-schedule-button"
+          >
+            일정 등록
+          </Link>
+        </footer>
+      )}
     </GroupDetailLayout>
   );
 }

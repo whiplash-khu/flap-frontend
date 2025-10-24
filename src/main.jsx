@@ -34,6 +34,7 @@ import NotificationListPage from "./pages/main/NotificationListPage.jsx";
 import GroupBoardPage from "./pages/main/GroupBoardPage.jsx";
 import CreatePostPage from "./pages/main/CreatePostPage.jsx";
 import GroupSchedulePage from "./pages/main/GroupSchedulePage.jsx";
+import CreateSchedulePage from "./pages/main/CreateSchedulePage.jsx";
 import GroupAttendancePage from "./pages/main/GroupAttendancePage.jsx";
 import GroupFeePage from "./pages/main/GroupFeePage.jsx";
 import GroupManagementPage from "./pages/main/GroupManagementPage.jsx";
@@ -77,6 +78,7 @@ const router = createBrowserRouter([
   { path: "/group/:groupId/board", element: <GroupBoardPage /> },
   { path: "/group/:groupId/board/new", element: <CreatePostPage /> },
   { path: "/group/:groupId/schedule", element: <GroupSchedulePage /> },
+  { path: "/group/:groupId/schedule/new", element: <CreateSchedulePage /> },
   { path: "/group/:groupId/attendance", element: <GroupAttendancePage /> },
   { path: "/group/:groupId/fee", element: <GroupFeePage /> },
   { path: "/group/:groupId/manage", element: <GroupManagementPage /> },

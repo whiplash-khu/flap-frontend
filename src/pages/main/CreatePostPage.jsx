@@ -37,6 +37,9 @@ function CreatePostPage() {
           className="content-textarea"
         />
       </div>
+      <div className="create-post-footer">
+        <button className="create-post-button">등록</button>
+      </div>
     </SignupLayout>
   );
 }

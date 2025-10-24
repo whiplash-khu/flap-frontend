@@ -59,7 +59,7 @@ function SignupVerifyPage() {
           <div className="input-with-icon">
             <input
               type="number"
-              placeholder="(임시 인증번호 '123456')"
+              placeholder="임시 인증번호 '123456'"
               value={verifyCode}
               onChange={handleCodeChange}
             />

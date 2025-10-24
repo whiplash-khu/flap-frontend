@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { FaPaperPlane, FaBell } from "react-icons/fa";
 import { LiaBarcodeSolid } from "react-icons/lia";
 import "./HomePage.css";
-
+//예시 데이터
 const mockMyGroups = [
   {
     id: 1,
@@ -31,29 +31,83 @@ const mockMyGroups = [
     image: "https://via.placeholder.com/100/fff59d/000000?Text=Hike",
   },
 ];
-const mockRecruitingGroups = [
-  {
-    id: 1,
-    name: "스트리트 푸드 파이터",
-    boardingTime: "2025-01",
-    issuedAt: "3일전",
-    tags: ["#음식", "#친목", "#취미"],
-    image: "https://via.placeholder.com/100",
-  },
-  {
-    id: 2,
-    name: "슬픈 도시 학생들",
-    boardingTime: "2025-01",
-    issuedAt: "3일전",
-    tags: ["#음식", "#친목", "#취미"],
-    image: "https://via.placeholder.com/100",
-  },
-];
 
+const generateMockRecruitingGroups = (page, limit) => {
+  const groups = [];
+  const startId = (page - 1) * limit + 100;
+  for (let i = 0; i < limit; i++) {
+    const id = startId + i;
+    groups.push({
+      id: id,
+      name: `구인중인 모임 ${id}`,
+      boardingTime: `2025-${String((id % 12) + 1).padStart(2, "0")}`,
+      issuedAt: `${(id % 7) + 1}일전`,
+      tags: [`#태그${id % 3}`, `#친목`, `#스터디`],
+      image: `https://via.placeholder.com/100/${Math.floor(
+        Math.random() * 16777215
+      ).toString(16)}/000?Text=G${id}`,
+    });
+  }
+  return groups;
+};
+
+const PAGE_LIMIT = 5;
 const userData = { profileImage: "/images/winter.jpeg" };
 
 function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [recruitingGroups, setRecruitingGroups] = useState([]);
+  const [page, setPage] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+  const observerRef = useRef();
+  const loadMoreRef = useRef(null);
+
+  const loadMoreGroups = useCallback(() => {
+    if (isLoading || !hasMore) return;
+    setIsLoading(true);
+    setTimeout(() => {
+      const nextPage = page + 1;
+      const newGroups = generateMockRecruitingGroups(nextPage, PAGE_LIMIT);
+      if (newGroups.length === 0) {
+        setHasMore(false);
+      } else {
+        setRecruitingGroups((prevGroups) => [...prevGroups, ...newGroups]);
+        setPage(nextPage);
+      }
+      if (nextPage >= 5) {
+        setHasMore(false);
+      }
+      setIsLoading(false);
+    }, 1000);
+  }, [page, isLoading, hasMore]);
+
+  useEffect(() => {
+    if (page === 0) {
+      loadMoreGroups();
+    }
+  }, [loadMoreGroups, page]);
+
+  useEffect(() => {
+    const options = { root: null, rootMargin: "20px", threshold: 1.0 };
+    observerRef.current = new IntersectionObserver((entries) => {
+      const target = entries[0];
+      if (target.isIntersecting && !isLoading && hasMore) {
+        loadMoreGroups();
+      }
+    }, options);
+
+    const currentRef = loadMoreRef.current;
+    if (currentRef) {
+      observerRef.current.observe(currentRef);
+    }
+
+    return () => {
+      if (observerRef.current && currentRef) {
+        observerRef.current.unobserve(currentRef);
+      }
+    };
+  }, [loadMoreGroups, isLoading, hasMore]);
 
   return (
     <>
@@ -63,7 +117,7 @@ function HomePage() {
             <Link to="/chat" className="icon-link">
               <FaPaperPlane />
             </Link>
-            <Link to="/notifications" className="icon-link">
+            <Link to="/notifications" className="bell-icon-link">
               <FaBell />
             </Link>
             <Link to="/mypage" className="icon-link">
@@ -76,15 +130,15 @@ function HomePage() {
           </div>
           <div className="greeting">
             <h2>너구리 님,</h2>
-            {/* 이름 api? 아니면 로그인 페이지에서 받아오기 */}
             <h2>다음 비행을 확인하세요!</h2>
           </div>
         </header>
+
         <section className="next-flight-section">
           <div className="next-flight-scroll">
             {mockMyGroups.map((group) => (
               <Link
-                to={"/group/${group.id}/board"}
+                to={`/group/${group.id}/board`}
                 key={group.id}
                 className="flight-item"
               >
@@ -101,7 +155,7 @@ function HomePage() {
 
         <main className="group-list-section">
           <h3>구인중인 모임</h3>
-          {mockRecruitingGroups.map((group) => (
+          {recruitingGroups.map((group) => (
             <Link
               to={`/group/apply/${group.id}`}
               key={group.id}
@@ -136,6 +190,27 @@ function HomePage() {
               </div>
             </Link>
           ))}
+          {isLoading && (
+            <div>
+              <p style={{ textAlign: "center", color: "#888" }}>
+                더 많은 모임 로딩 중...
+              </p>
+            </div>
+          )}
+          {hasMore && (
+            <div
+              ref={loadMoreRef}
+              style={{ height: "50px" }}
+              aria-hidden="true"
+            />
+          )}
+          {!hasMore && recruitingGroups.length > 0 && (
+            <div>
+              <p style={{ textAlign: "center", color: "#aaa" }}>
+                모든 모임을 불러왔습니다.
+              </p>
+            </div>
+          )}
         </main>
 
         <div className="add-group-container">
@@ -160,7 +235,7 @@ function HomePage() {
             <Link to="/creategroup/create" className="modal-button">
               모임 생성하기
             </Link>
-            <Link to="/group/search" className="modal-button">
+            <Link to="/main/search" className="modal-button">
               모임 검색하기
             </Link>
           </div>

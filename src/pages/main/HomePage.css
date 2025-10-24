@@ -181,6 +181,10 @@
   cursor: pointer;
 }
 
+.bell-icon-link {
+  color: #1f2f56;
+}
+
 .fab-modal-backdrop {
   position: fixed;
   top: 0;

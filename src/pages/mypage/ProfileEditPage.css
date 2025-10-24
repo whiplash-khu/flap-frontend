@@ -25,6 +25,15 @@
   cursor: pointer;
 }
 
+.upload-button {
+  background: none;
+  border: none;
+  font-size: 0.9 rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: #ee3300;
+}
+
 .edit-field-row {
   display: flex;
   align-items: center;
