@@ -66,3 +66,172 @@
 .action-link.danger {
   color: #d93025;
 }
+
+.edit-button {
+  background-color: #f0f4f8;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.edit-field-row {
+  display: flex;
+  /* width: 80px; */
+  font-weight: 500;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 0.5rem;
+}
+
+.field-label {
+  width: 80px;
+  font-weight: 500;
+  color: #333;
+}
+
+.email-input {
+  flex-grow: 1;
+  border: 1px solid transparent;
+  text-align: right;
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin: 0 1rem;
+  background-color: transparent;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.email-input.editing {
+  border: 1px solid #007bff;
+  background-color: #f8f9fa;
+  outline: none;
+}
+
+.emaile-input:read-only {
+  pointer-events: none;
+}
+
+.edit-button {
+  background-color: #f0f4f8;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+.edit-field-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 0.5rem;
+}
+
+.field-label {
+  width: 80px;
+  font-weight: 500;
+  color: #333;
+}
+
+.isMale-input {
+  flex-grow: 1;
+  border: 1px solid transparent;
+  text-align: right;
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin: 0 1rem;
+  background-color: transparent;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.isMale-input.editing {
+  border: 1px solid #007bff;
+  background-color: #f8f9fa;
+  outline: none;
+}
+
+/* .isMale-input:read-only {
+  pointer-events: none;
+} */
+
+.edit-button {
+  background-color: #f0f4f8;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.school-input {
+  flex-grow: 1;
+  border: 1px solid transparent;
+  text-align: right;
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin: 0 1rem;
+  background-color: transparent;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.school-input.editing {
+  border: 1px solid #007bff;
+  background-color: #f8f9fa;
+  outline: none;
+}
+
+.school-input:read-only {
+  pointer-events: none;
+}
+
+.admissionYear-input {
+  flex-grow: 1;
+  border: 1px solid transparent;
+  text-align: right;
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin: 0 1rem;
+  background-color: transparent;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.admissionYear-input.editing {
+  border: 1px solid #007bff;
+  background-color: #f8f9fa;
+  outline: none;
+}
+
+.admissionYear-input:read-only {
+  pointer-events: none;
+}
+
+.birthdate-input {
+  flex-grow: 1;
+  border: 1px solid transparent;
+  text-align: right;
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin: 0 1rem;
+  background-color: transparent;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.birthdate-input.editing {
+  border: 1px solid #007bff;
+  background-color: #f8f9fa;
+  outline: none;
+}
+
+.birthdate-input:read-only {
+  pointer-events: none;
+}

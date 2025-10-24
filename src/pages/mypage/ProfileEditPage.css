@@ -38,10 +38,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 0;
+  padding: 1.25rem 0.5rem;
 }
 
 .field-label {
+  width: 80px;
   font-weight: 500;
   color: #333;
 }

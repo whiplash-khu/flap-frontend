@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { GoCheckCircle } from "react-icons/go";
@@ -8,8 +9,7 @@ import "./CreateGroupQuestionPage.css";
 
 function CreateGroupQuestionPage() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const existingData = location.state;
+  const { state: existingData } = useLocation(); // { name,introduction,description,startAt,endAt }
 
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState("");
@@ -24,9 +24,8 @@ function CreateGroupQuestionPage() {
     }
   };
 
-  const handleRemoveQuestion = (indexToRemove) => {
+  const handleRemoveQuestion = (indexToRemove) =>
     setQuestions(questions.filter((_, index) => index !== indexToRemove));
-  };
 
   const handleEditStart = (index, text) => {
     setEditingIndex(index);
@@ -46,29 +45,26 @@ function CreateGroupQuestionPage() {
   };
 
   const handleEditKeyDown = (e, index) => {
-    if (e.key === "Enter") {
-      handleEditSave(index);
+    if (e.key === "Enter") handleEditSave(index);
+  };
+
+  const handleDone = () => setIsConfirmModalOpen(true);
+
+  const handleConfirmCreation = async () => {
+    const qs = questions.map(q => q.trim()).filter(Boolean);
+    if (qs.length === 0) {
+      alert("질문을 1개 이상 작성해주세요.");
+      return;
     }
-  };
 
-  const handleDone = () => {
-    setIsConfirmModalOpen(true);
-  };
-
-  const handleConfirmCreation = () => {
-    const finalData = { ...existingData, questions };
-    console.log("--- 최종 모임 생성 데이터 ---", finalData);
-    setIsConfirmModalOpen(false);
+    const finalData = { ...existingData, questions: qs };
+    
     navigate("/group/create-complete", { state: finalData });
   };
 
   return (
     <>
-      <SignupLayout
-        title="모임 생성"
-        buttonText="완료"
-        onButtonClick={handleDone}
-      >
+      <SignupLayout title="모임 생성" buttonText="완료" onButtonClick={handleDone}>
         <h2 className="main-heading">
           가입 질문을
           <br />
@@ -108,10 +104,7 @@ function CreateGroupQuestionPage() {
                     className="edit-input"
                     autoFocus
                   />
-                  <button
-                    onClick={() => handleEditSave(index)}
-                    className="icon-button"
-                  >
+                  <button onClick={() => handleEditSave(index)} className="icon-button">
                     <GoCheckCircle />
                   </button>
                 </div>
@@ -121,16 +114,10 @@ function CreateGroupQuestionPage() {
                     {index + 1}. {question}
                   </span>
                   <div className="icon-buttons">
-                    <button
-                      onClick={() => handleEditStart(index, question)}
-                      className="icon-button"
-                    >
+                    <button onClick={() => handleEditStart(index, question)} className="icon-button">
                       <LuPencil />
                     </button>
-                    <button
-                      onClick={() => handleRemoveQuestion(index)}
-                      className="icon-button-trash"
-                    >
+                    <button onClick={() => handleRemoveQuestion(index)} className="icon-button-trash">
                       <TfiTrash />
                     </button>
                   </div>
@@ -150,16 +137,10 @@ function CreateGroupQuestionPage() {
               다시 한번 확인해주세요.
             </p>
             <div className="confirm-modal-actions">
-              <button
-                className="confirm-button"
-                onClick={handleConfirmCreation}
-              >
+              <button className="confirm-button" onClick={handleConfirmCreation}>
                 네, 생성합니다.
               </button>
-              <button
-                className="cancel-button"
-                onClick={() => setIsConfirmModalOpen(false)}
-              >
+              <button className="cancel-button" onClick={() => setIsConfirmModalOpen(false)}>
                 취소
               </button>
             </div>

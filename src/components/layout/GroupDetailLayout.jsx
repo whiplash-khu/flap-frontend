@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import "./GroupDetailLayout.css";
@@ -7,13 +7,13 @@ const mockMembers = [
   {
     id: "leader",
     name: "모임장",
-    image: "https://via.placeholder.com/50/e0e0e0/808080?Text=L",
+    image: "https://placehold.co/50/e0e0e0/808080?Text=L",
   },
   { id: "user1", name: "너구리", image: "/images/winter.jpeg" },
   {
     id: "user2",
     name: "피카츄",
-    image: "https://via.placeholder.com/50/ffca28/d32f2f?Text=P",
+    image: "https://placehold.co/50/ffca28/d32f2f?Text=P",
   },
 ];
 function GroupDetailLayout({
@@ -37,7 +37,7 @@ function GroupDetailLayout({
               <button
                 className="back-arrow"
                 onClick={
-                  onBackClick ? onBackClick : () => navigate("/homepage")
+                  onBackClick ? onBackClick : () => navigate("/")
                 }
               >
                 &#x3c;
@@ -93,7 +93,7 @@ function GroupDetailLayout({
           >
             <h3 className="modal-title">구성원 보기</h3>
             <img
-              src="https://via.placeholder.com/100/ffcc80/000000?Text=Group"
+              src="https://placehold.co/100/ffcc80/000000?Text=Group"
               alt="Group"
               className="modal-group-image"
             />

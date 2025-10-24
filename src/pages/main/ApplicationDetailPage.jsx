@@ -8,7 +8,7 @@ const mockApplication = {
     name: "신청자 이름",
     info: "학교 | 학번 | 나이 | 성별",
     contact: "연락처",
-    image: "https://via.placeholder.com/80",
+    image: "https://placehold.co/80",
   },
   responses: [
     {

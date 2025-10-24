@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 import { useState, useEffect, useRef } from "react";
+=======
+import { useState, useContext, useEffect } from 'react';
+>>>>>>> c98030d (2025102506)
 import MyPageLayout from "../../components/layout/MyPageLayout";
+import UserContext from "../../components/context/UserContext";
+import { api } from "../../lib/api";
 import "./NoticesPage.css";
+<<<<<<< HEAD
 //예시 데이터
 const mockNotices = [
   {
@@ -81,6 +88,34 @@ function NoticesPage() {
         ))}
         {visibleCount < mockNotices.length && (
           <div ref={loaderRef} style={{ height: "40px" }} />
+=======
+
+function NoticesPage() {
+  const [user] = useContext(UserContext);
+  const [notices, setNotices] = useState([]);
+
+  useEffect(() => {
+    api.get("/notices").then((res) => setNotices(res.data.data)).catch((err) => console.error("공지사항을 불러올 수 없습니다.", err))
+  }, []);
+  
+  return (
+    <MyPageLayout title="공지사항">
+      <div className="notice-list">
+        {notices.length === 0 ? (
+          <p className="no-notice">등록된 공지사항이 없습니다.</p>
+        ) : (
+          notices.map((notice) => (
+            <div key={notice.id} className="notice-item">
+              <div className="notice-header">
+                <span className="notice-title">{notice.title}</span>
+                <span className="notice-date">
+                  {new Date(notice.createdAt).toLocaleDateString("ko-KR")}
+                </span>
+              </div>
+              <p className="notice-content">{notice.content}</p>
+            </div>
+          ))
+>>>>>>> c98030d (2025102506)
         )}
       </div>
     </MyPageLayout>

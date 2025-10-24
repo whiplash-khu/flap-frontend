@@ -3,11 +3,9 @@ import "./SignupCompletePage.css";
 
 function SignupCompletePage() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const signupData = location.state;
 
   const handleContinue = () => {
-    navigate("/profile-setup", { state: signupData });
+    navigate("/");
   };
 
   return (
@@ -20,8 +18,8 @@ function SignupCompletePage() {
             완료했어요!
           </h1>
           <p>
-            나를 소개할 <br />
-            프로필을 만들어볼까요?
+            이제 FLAP에서 <br />
+            자유롭게 날아볼까요?
           </p>
         </div>
         <div className="complete-footer">

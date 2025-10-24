@@ -113,7 +113,7 @@
 
 .ticket-image {
   width: 64px;
-  height: 64px;
+  height: 80px;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;

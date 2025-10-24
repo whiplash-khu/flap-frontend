@@ -1,22 +1,58 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { api } from "../../lib/api";              // ← 추가
 import "./LoginPage.css";
+import UserContext from "../../components/context/UserContext";
+
 
 function LoginPage() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);  // ← 추가
+  const [user, setUser] = useContext(UserContext);
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (!email || !password) {
       alert("이메일과 비밀번호를 모두 입력해주세요.");
       return;
     }
-    // 여기는 백엔드 연동되면 바꿔야됨
-    console.log("로그인 시도:", { email, password });
-    alert(`${email}님, 환영합니다!`);
 
-    navigate("/homepage");
+    try {
+      setLoading(true);
+
+      // 백엔드 명세: POST /auth/login
+      // body 예시: { email, password }
+      let { data } = (await api.post("/auth/login", { email, password })).data;
+
+      console.log(data);
+
+      localStorage.setItem("accessToken", data.tokens.access);
+      localStorage.setItem("refreshToken", data.tokens.refresh);
+      localStorage.setItem("userId", data.id);
+
+      // 응답 형태 가정: { token, user }
+      // (토큰 키가 accessToken 등이라면 아래 한 줄만 맞게 바꿔주세요.)
+
+      const user = (await api.get("/users/" + data.id)).data.data;
+
+      setUser(user);
+
+      navigate("/");
+    } catch (err) {
+      // 에러 메시지 우선순위대로 표시
+      const msg =
+        err?.response?.data?.message ||
+        err?.message ||
+        "로그인 중 오류가 발생했습니다.";
+      alert(msg);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const onKeyDown = (e) => {
+    if (e.key === "Enter" && !loading) handleLogin();
   };
 
   return (
@@ -37,6 +73,9 @@ function LoginPage() {
               placeholder="이메일"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              onKeyDown={onKeyDown}
+              disabled={loading}
+              autoComplete="email"
             />
           </div>
           <div className="input-group">
@@ -45,14 +84,23 @@ function LoginPage() {
               placeholder="비밀번호"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={onKeyDown}
+              disabled={loading}
+              autoComplete="current-password"
             />
           </div>
-          <button className="login-button" onClick={handleLogin}>
-            로그인
+
+          <button
+            className="login-button"
+            onClick={handleLogin}
+            disabled={loading}
+            aria-busy={loading ? "true" : "false"}
+          >
+            {loading ? "로그인 중..." : "로그인"}
           </button>
+
           <div className="forgot-links">
             <a href="#">아이디 찾기</a> | <a href="#">비밀번호 찾기</a>
-            {/* 일단 지금은 아이디, 비번 찾기 기능 안넣어놓음 */}
           </div>
         </div>
 

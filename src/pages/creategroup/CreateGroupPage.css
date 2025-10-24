@@ -53,3 +53,11 @@
   font-weight: 600;
   margin-bottom: 1rem;
 }
+
+.ticket-image {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}

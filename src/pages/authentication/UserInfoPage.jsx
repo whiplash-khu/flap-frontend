@@ -5,20 +5,27 @@ import "./UserInfoPage.css";
 
 function UserInfoPage() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const existingData = location.state;
+  const { state: existingData } = useLocation(); // { email, token, password }
 
   const [name, setName] = useState("");
-  const [birthdate, setBirthdate] = useState("");
-  const [gender, setGender] = useState("");
+  const [birthdate, setBirthdate] = useState(""); // 사용자는 YYYY.MM.DD 형식으로 입력한다고 가정
+  const [gender, setGender] = useState("");       // "male" | "female"
 
   const handleNext = () => {
     if (!name || !birthdate || !gender) {
       alert("모든 정보를 입력해주세요.");
       return;
     }
-    const updatedData = { ...existingData, name, birthdate, gender };
-    console.log("현재까지의 회원가입 정보:", updatedData);
+
+    // YYYY.MM.DD → YYYY-MM-DD 로 변환
+    const normalizedBirth = birthdate.replaceAll(".", "-").trim();
+
+    const updatedData = {
+      ...existingData, // email, token, password
+      name,
+      birthdate: normalizedBirth,
+      isMale: gender === "male",
+    };
 
     navigate("/signup/school-info", { state: updatedData });
   };

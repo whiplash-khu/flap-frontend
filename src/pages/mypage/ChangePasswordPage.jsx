@@ -2,16 +2,20 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SignupLayout from "../../components/layout/SignupLayout";
 import "./ChangePasswordPage.css";
+import { api } from "../../lib/api";
+import { useContext } from 'react';
+import UserContext from "../../components/context/UserContext";
 
 function ChangePasswordPage() {
   const navigate = useNavigate();
+  const [user] = useContext(UserContext);
 
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleChangePassword = () => {
+  const handleChangePassword = async () => {
     if (!currentPassword || !newPassword || !confirmPassword) {
       setError("모든 필드를 입력해주세요.");
       return;
@@ -24,6 +28,13 @@ function ChangePasswordPage() {
       setError("새 비밀번호가 일치하지 않습니다.");
       return;
     }
+
+    const body = {
+      previousPassword: currentPassword, 
+      password: newPassword            
+    };
+
+    const res = await api.patch(`/users/${user.id}`, body);
 
     setError("");
     console.log("현재 비밀번호:", currentPassword);

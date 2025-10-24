@@ -1,126 +1,86 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+// src/pages/main/HomePage.jsx
+import React, { useContext, useEffect, useState, useMemo, useRef } from "react";
 import { Link } from "react-router-dom";
 import { FaPaperPlane, FaBell } from "react-icons/fa";
 import { LiaBarcodeSolid } from "react-icons/lia";
+import { api } from "@/lib/api";
 import "./HomePage.css";
-//예시 데이터
-const mockMyGroups = [
-  {
-    id: 1,
-    name: "스트리트 푸드 파이터",
-    image: "https://via.placeholder.com/100/ffcc80/000000?Text=Food",
-  },
-  {
-    id: 2,
-    name: "슬픈 도시 학생들",
-    image: "https://via.placeholder.com/100/b3e5fc/000000?Text=Study",
-  },
-  {
-    id: 3,
-    name: "이름뭐하지",
-    image: "https://via.placeholder.com/100/c5e1a5/000000?Text=Etc",
-  },
-  {
-    id: 4,
-    name: "코딩 스터디",
-    image: "https://via.placeholder.com/100/ce93d8/000000?Text=Code",
-  },
-  {
-    id: 5,
-    name: "주말 등산 모임",
-    image: "https://via.placeholder.com/100/fff59d/000000?Text=Hike",
-  },
-];
+import UserContext from "../../components/context/UserContext";
+import InfiniteScroll from "@/components/common/Organisms/InfiniteScroll";
 
-const generateMockRecruitingGroups = (page, limit) => {
-  const groups = [];
-  const startId = (page - 1) * limit + 100;
-  for (let i = 0; i < limit; i++) {
-    const id = startId + i;
-    groups.push({
-      id: id,
-      name: `구인중인 모임 ${id}`,
-      boardingTime: `2025-${String((id % 12) + 1).padStart(2, "0")}`,
-      issuedAt: `${(id % 7) + 1}일전`,
-      tags: [`#태그${id % 3}`, `#친목`, `#스터디`],
-      image: `https://via.placeholder.com/100/${Math.floor(
-        Math.random() * 16777215
-      ).toString(16)}/000?Text=G${id}`,
-    });
-  }
-  return groups;
-};
 
-const PAGE_LIMIT = 5;
-const userData = { profileImage: "/images/winter.jpeg" };
+const userData = { profileImage: "/images/winter.jpeg", nickname: "너구리" };
 
 function HomePage() {
+  //const ref = useRef();
+
+  const [user] = useContext(UserContext);
+  //const [myGroups, setMyGroups] = useState([]);
+  //const [groups, setGroups] = useState([]);
+  //const [index, setIndex] = useState();
+
+  //const [loading, setLoading] = useState(false);
+  //const [errMsg, setErrMsg] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [recruitingGroups, setRecruitingGroups] = useState([]);
-  const [page, setPage] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
-  const observerRef = useRef();
-  const loadMoreRef = useRef(null);
 
-  const loadMoreGroups = useCallback(() => {
-    if (isLoading || !hasMore) return;
-    setIsLoading(true);
-    setTimeout(() => {
-      const nextPage = page + 1;
-      const newGroups = generateMockRecruitingGroups(nextPage, PAGE_LIMIT);
-      if (newGroups.length === 0) {
-        setHasMore(false);
-      } else {
-        setRecruitingGroups((prevGroups) => [...prevGroups, ...newGroups]);
-        setPage(nextPage);
-      }
-      if (nextPage >= 5) {
-        setHasMore(false);
-      }
-      setIsLoading(false);
-    }, 1000);
-  }, [page, isLoading, hasMore]);
+  //useEffect(() => {
+  //  let aborted = false;
+  //  (async () => {
+  //    try {
+  //      setLoading(true);
+  //      setErrMsg("");
+  //      let query = '';
 
-  useEffect(() => {
-    if (page === 0) {
-      loadMoreGroups();
-    }
-  }, [loadMoreGroups, page]);
+  //      if(groups['length'] !== 0) {
+  //        query = '?index=' + groups[groups['length']-1].id;
+  //      }
 
-  useEffect(() => {
-    const options = { root: null, rootMargin: "20px", threshold: 1.0 };
-    observerRef.current = new IntersectionObserver((entries) => {
-      const target = entries[0];
-      if (target.isIntersecting && !isLoading && hasMore) {
-        loadMoreGroups();
-      }
-    }, options);
+  //      console.log(groups);
 
-    const currentRef = loadMoreRef.current;
-    if (currentRef) {
-      observerRef.current.observe(currentRef);
-    }
+  //      const { data } = await api.get('/groups' + query);
 
-    return () => {
-      if (observerRef.current && currentRef) {
-        observerRef.current.unobserve(currentRef);
-      }
-    };
-  }, [loadMoreGroups, isLoading, hasMore]);
+  //      console.log(groups);
+  //      // 응답 예: { status:"success", data: [ { id, name, tags:[], isRecruiting, startAt, ... }, ... ] }
+  //      if (!aborted) setGroups(Array.isArray(data?.data) ? data.data : []);
+  //    } catch (e) {
+  //      if (aborted) return;
+  //      console.error("[HomePage] fetchGroups error:", e?.response?.data || e);
+  //      setErrMsg(
+  //        e?.response?.data?.message || "그룹 목록을 불러오지 못했습니다."
+  //      );
+  //    } finally {
+  //      if (!aborted) setLoading(false);
+  //    }
+  //  })();
+  //  return () => {
+  //    aborted = true;
+  //  };
+  //}, [user]);
+
+  // 서버 데이터에서 “내가 참여한 모임” / “구인중인 모임” 분리
+  // 백엔드가 플래그를 어떻게 주는지에 따라 아래 조건을 맞추세요.
+  // 예: isRecruiting === true → 구인중, false → 내 모임
+  //const myGroups = useMemo(
+  //  () => groups.filter((g) => g.isRecruiting === false),
+  //  [groups]
+  //);
+  //const recruitingGroups = useMemo(
+  //  () => groups.filter((g) => g.isRecruiting === true),
+  //  [groups]
+  //);
 
   return (
     <>
       <div className="home-page-container">
         <header className="home-header new-design">
           <div className="header-icons">
-            <Link to="/chat" className="icon-link">
+            <Link to="/chat" className="icon-link" aria-label="채팅">
               <FaPaperPlane />
             </Link>
-            <Link to="/notifications" className="bell-icon-link">
+            <Link to="/notifications" className="icon-link" aria-label="알림">
               <FaBell />
             </Link>
-            <Link to="/mypage" className="icon-link">
+            <Link to="/mypage" className="icon-link" aria-label="마이페이지">
               <img
                 src={userData.profileImage}
                 alt="profile"
@@ -129,98 +89,120 @@ function HomePage() {
             </Link>
           </div>
           <div className="greeting">
-            <h2>너구리 님,</h2>
+            <h2>{userData.nickname} 님,</h2>
             <h2>다음 비행을 확인하세요!</h2>
           </div>
         </header>
 
         <section className="next-flight-section">
-          <div className="next-flight-scroll">
-            {mockMyGroups.map((group) => (
-              <Link
-                to={`/group/${group.id}/board`}
-                key={group.id}
-                className="flight-item"
-              >
-                <img
-                  src={group.image}
-                  alt={group.name}
-                  className="flight-item-img"
-                />
-                <span>{group.name}</span>
-              </Link>
-            ))}
-          </div>
+          {/*{loading && <div className="next-flight-scroll">불러오는 중…</div>}
+          {!loading && errMsg && (
+            <div className="next-flight-scroll">{errMsg}</div>
+          )}
+          {!loading && !errMsg && (
+            <div className="next-flight-scroll">
+              {[].length === 0 ? (
+                <div className="flight-item empty">참여중인 모임이 없어요</div>
+              ) : (
+                [].map((g) => {
+                  const img =
+                    g.media?.url ||
+                    g.image ||
+                    "https://placehold.co/100/cccccc/000000?Text=Group";
+                  return (
+                    <Link
+                      to={`/group/${g.id}/board`}
+                      key={g.id}
+                      className="flight-item"
+                      title={g.name}
+                    >
+                      <img src={img} alt={g.name} className="flight-item-img" />
+                      <span>{g.name}</span>
+                    </Link>
+                  );
+                })
+              )}
+            </div>
+          )}*/}
         </section>
-
+        
         <main className="group-list-section">
           <h3>구인중인 모임</h3>
-          {recruitingGroups.map((group) => (
-            <Link
-              to={`/group/apply/${group.id}`}
-              key={group.id}
-              className="group-ticket"
-            >
-              <div className="ticket-header">{group.name}</div>
-              <div className="ticket-body">
-                <img
-                  src={group.image}
-                  alt={group.name}
-                  className="ticket-image"
-                />
-                <div className="ticket-info">
-                  <div className="ticket-details-row">
-                    <div className="ticket-details">
-                      <span>Boarding Time</span>
-                      <strong>{group.boardingTime}</strong>
-                    </div>
-                    <div className="ticket-details">
-                      <span>Issued At</span>
-                      <strong>{group.issuedAt}</strong>
-                    </div>
-                  </div>
-                  <div className="ticket-tags">
-                    <span>Tag</span>
-                    <strong>{group.tags.join(" ")}</strong>
-                  </div>
-                </div>
-                <div className="ticket-stub">
-                  <LiaBarcodeSolid className="barcode-icon" />
-                </div>
-              </div>
-            </Link>
-          ))}
-          {isLoading && (
-            <div>
-              <p style={{ textAlign: "center", color: "#888" }}>
-                더 많은 모임 로딩 중...
-              </p>
-            </div>
-          )}
-          {hasMore && (
-            <div
-              ref={loadMoreRef}
-              style={{ height: "50px" }}
-              aria-hidden="true"
-            />
-          )}
-          {!hasMore && recruitingGroups.length > 0 && (
-            <div>
-              <p style={{ textAlign: "center", color: "#aaa" }}>
-                모든 모임을 불러왔습니다.
-              </p>
-            </div>
-          )}
-        </main>
 
-        <div className="add-group-container">
-          <button
-            className="add-group-button"
-            onClick={() => setIsModalOpen(true)}
-          >
-            +
-          </button>
-        </div>
+          <div className="add-group-container">
+            <button
+              className="add-group-button"
+              onClick={() => setIsModalOpen(true)}
+              aria-label="모임 추가"
+            >
+              +
+            </button>
+          </div>
+
+          <InfiniteScroll baseUrl='/groups' query={{
+            isMember: false,
+            size: 3
+          }} mapFn={(g) => {
+                const img =
+                  g.media?.url ||
+                  g.image ||
+                  "https://placehold.co/100/eeeeee/000000?Text=Recruit";
+                const boardingTime =
+                  g.boardingTime ||
+                  (g.startAt ? g.startAt.slice(0, 7) : "미정"); // YYYY-MM
+                const issuedAt = g.issuedAt || "최근";
+                const tags = Array.isArray(g.tags) ? g.tags : [];
+
+                return (
+                  <Link
+                    to={`/group/apply/${g.id}`}
+                    key={g.id}
+                    className="group-ticket"
+                    title={g.name}
+                  >
+                    <div className="ticket-header">{g.name}</div>
+                    <div className="ticket-body">
+                      <img
+                        src={img}
+                        alt={g.name}
+                        className="ticket-image"
+                      />
+                      <div className="ticket-info">
+                        <div className="ticket-details-row">
+                          <div className="ticket-details">
+                            <span>Boarding Time</span>
+                            <strong>{boardingTime}</strong>
+                          </div>
+                          <div className="ticket-details">
+                            <span>Issued At</span>
+                            <strong>{issuedAt}</strong>
+                          </div>
+                        </div>
+                        <div className="ticket-tags">
+                          <span>Tag</span>
+                          <strong>
+                            {tags.length ? tags.map((t) => `#${t}`).join(" ") : "-"}
+                          </strong>
+                        </div>
+                      </div>
+                      <div className="ticket-stub">
+                        <LiaBarcodeSolid className="barcode-icon" />
+                      </div>
+                    </div>
+                  </Link>
+                );
+              }} />
+          {/*{loading && <div className="group-ticket">불러오는 중…</div>}
+          {!loading && errMsg && <div className="group-ticket">{errMsg}</div>}
+
+          {!loading &&
+            !errMsg &&
+            (groups.length === 0 ? (
+              <div className="group-ticket empty">현재 구인중인 모임이 없어요</div>
+            ) : (
+              groups.map()
+            ))}*/}
+        </main>
       </div>
 
       {isModalOpen && (
